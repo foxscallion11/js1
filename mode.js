@@ -1,8 +1,8 @@
-(function () {
-  // ÉèÖÃ mode Ä¬ÈÏÖµ
+ï»¿(function () {
+  // è®¾ç½® mode é»˜è®¤å€¼
   if (sessionStorage.getItem('mode') == null) {
     var hours = new Date();
-    // Èç¹ûÊ±¼äÊÇÍíÉÏ 18 µãµ½ÔçÉÏ 6 µã£¬×Ô¶¯ºÚÒ¹
+    // å¦‚æžœæ—¶é—´æ˜¯æ™šä¸Š 18 ç‚¹åˆ°æ—©ä¸Š 6 ç‚¹ï¼Œè‡ªåŠ¨é»‘å¤œ
     if (hours.getHours() >= 18 || hours.getHours() <= 6) {
       sessionStorage.setItem('mode', 'github-dark');
     } else {
@@ -10,13 +10,13 @@
     }
   }
 
-  // body ±³¾° ÑÓ³ÙÔØÈë
+  // body èƒŒæ™¯ å»¶è¿Ÿè½½å…¥
   // document.body.style.background = 'url(https://cdn.jsdelivr.net/gh/zsdycs/lipk.org/static/images/geometry.png)';
   // document.body.style.backgroundRepeat = 'repeat';
 
   var modeLS = sessionStorage.getItem('mode');
 
-  // ÅÐ¶Ï¼ÓÔØÏàÓ¦Ä£Ê½ CSS
+  // åˆ¤æ–­åŠ è½½ç›¸åº”æ¨¡å¼ CSS
   window.addDarkmodeCSS = function addDarkmodeCSS(mode) {
     var githubLightCSS = document.querySelector('#github-light');
     var githubDarkCSS = document.querySelector('#github-dark');
@@ -29,7 +29,7 @@
     if (!modeTag) return;
     var highlightjsNightCSS = document.querySelector('#highlightjsThemeNight');
 
-    // ³õÊ¼»¯
+    // åˆå§‹åŒ–
     [ githubDarkCSS.disabled,
       githubLightCSS.disabled,
       githubDarkOrangeCSS.disabled,
@@ -48,37 +48,37 @@
     if (mode === 'github-light') {
       if (highlightjsNightCSS) highlightjsNightCSS.disabled = true;
       githubLightCSS.disabled = false;
-      modeTag.innerHTML = '°×Ìì';
+      modeTag.innerHTML = 'ç™½å¤©';
     } else {
       if (highlightjsNightCSS) highlightjsNightCSS.disabled = false;
       if (mode === 'github-dark') {
         githubDarkCSS.disabled = false;
-        modeTag.innerHTML = 'ºÚÒ¹';
+        modeTag.innerHTML = 'é»‘å¤œ';
       }
       if (mode === 'github-dark-orange') {
         githubDarkOrangeCSS.disabled = false;
-        modeTag.innerHTML = 'éÙÄº';
+        modeTag.innerHTML = 'æ©˜æš®';
       }
       if (mode === 'dark-blue') {
         darkBlueCSS.disabled = false;
-        modeTag.innerHTML = 'ÓÄî¨';
+        modeTag.innerHTML = 'å¹½çž‘';
       }
       if (mode === 'icy-dark') {
         icyDarkCSS.disabled = false;
-        modeTag.innerHTML = 'Óê³¿';
+        modeTag.innerHTML = 'é›¨æ™¨';
       }
       if (mode === 'photon-dark') {
         photonDarkCSS.disabled = false;
-        modeTag.innerHTML = '×ÏÒ¹';
+        modeTag.innerHTML = 'ç´«å¤œ';
       }
     }
   }
 
-  // »­Ãæ¼ÓÔØÊ±£¬¼ÓÔØÏàÓ¦Ä£Ê½ CSS
+  // ç”»é¢åŠ è½½æ—¶ï¼ŒåŠ è½½ç›¸åº”æ¨¡å¼ CSS
   addDarkmodeCSS(modeLS);
 })();
 
-// ÇÐ»»ºÚÒ¹°×ÌìÄ£Ê½
+// åˆ‡æ¢é»‘å¤œç™½å¤©æ¨¡å¼
 function mode() {
   var nowDarkmode = sessionStorage.getItem('mode');
   var beaudar = document.querySelector('#beaudar iframe');
@@ -87,13 +87,13 @@ function mode() {
     theme: 'github-light'
   };
   /**
-   * Ë³Ðò£º
-   *       -> 'github-light'        // °×Ìì
-   *       -> 'github-dark'         // ºÚÒ¹
-   *       -> 'github-dark-orange'  // éÙÄº
-   *       -> 'dark-blue'           // ÓÄî¨
-   *       -> 'icy-dark'            // Óê³¿
-   *       -> 'photon-dark'         // ×ÏÒ¹
+   * é¡ºåºï¼š
+   *       -> 'github-light'        // ç™½å¤©
+   *       -> 'github-dark'         // é»‘å¤œ
+   *       -> 'github-dark-orange'  // æ©˜æš®
+   *       -> 'dark-blue'           // å¹½çž‘
+   *       -> 'icy-dark'            // é›¨æ™¨
+   *       -> 'photon-dark'         // ç´«å¤œ
    */
   if (nowDarkmode === 'github-light') {
     // github-light -> github-dark
@@ -126,7 +126,7 @@ function mode() {
     sessionStorage.setItem('mode', 'github-light');
     this.addDarkmodeCSS('github-light');
   }
-  // Óë beaudar Í¨ÐÅ
+  // ä¸Ž beaudar é€šä¿¡
   if (sessionStorage.getItem('beaudar') === 'true') {
     beaudar.contentWindow.postMessage(message, 'https://beaudar.lipk.org');
   }
